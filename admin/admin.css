@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8f3f0;
+  color: #222;
+}
+
+.admin-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 25px;
+}
+
+.login-card,
+.form-panel,
+.list-panel {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.login-card {
+  max-width: 420px;
+  margin: 100px auto;
+  padding: 30px;
+}
+
+.login-card h1,
+.form-panel h2,
+.list-panel h2,
+.admin-song-card h3 {
+  color: #7f1d1d;
+}
+
+.login-card p,
+.admin-song-card p {
+  color: #666;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+button {
+  background: #b91c1c;
+  color: white;
+  border: none;
+  padding: 11px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #7f1d1d;
+}
+
+.hidden {
+  display: none;
+}
+
+.error-message {
+  color: #dc2626;
+  margin-top: 12px;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+  color: white;
+  padding: 22px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.back-btn {
+  background: #facc15;
+  color: #7f1d1d;
+  padding: 11px 16px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logout-btn {
+  background: #ffffff;
+  color: #b91c1c;
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: 430px 1fr;
+  gap: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.secondary-btn {
+  background: #6b7280;
+}
+
+.admin-song-card {
+  border: 1px solid #ddd;
+  border-left: 6px solid #b91c1c;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.delete-btn {
+  background: #dc2626;
+}
+
+.edit-btn {
+  background: #facc15;
+  color: #7f1d1d;
+}
+
+.existing-files {
+  margin: 8px 0 16px;
+  padding: 10px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9px;
+  color: #7f1d1d;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .admin-buttons {
+    justify-content: center;
+  }
+}

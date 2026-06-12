@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Choir Song Library</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+    <header class="app-header">
+  <div class="header-content">
+
+    <div class="header-brand">
+
+      <img
+        src="images/logo.jpg"
+        alt="Sta Lucia Parish Youth Choir"
+        class="choir-logo"
+      />
+
+      <div>
+        <h1>Sta. Lucia Parish Youth Choir</h1>
+
+        <p>
+          Search and view choir songs,
+          lyrics, sheet music, and files.
+        </p>
+      </div>
+
+    </div>
+
+    <a href="admin/index.html" class="admin-link">
+      Admin Login
+    </a>
+
+  </div>
+</header>
+
+  <main class="app-container">
+    <section class="search-section">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search song title, category, or lyrics..."
+      />
+
+      <div id="categoryFilters" class="category-filters"></div>
+    </section>
+
+    <section class="content-layout">
+      <aside class="song-panel">
+        <div class="panel-title">
+          <h2>Songs</h2>
+          <span id="songCount">0</span>
+        </div>
+
+        <div id="songList" class="song-list"></div>
+      </aside>
+
+      <section id="songDetails" class="details-panel">
+        <div class="empty-state">
+          <h2>Select a song</h2>
+          <p>Choose a song from the list to view lyrics and images.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Choir Song Library</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

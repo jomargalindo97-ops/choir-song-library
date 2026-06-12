@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Choir Song Admin</title>
+
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="admin-container">
+    <section id="loginSection" class="login-card">
+      <h1>Admin Login</h1>
+      <p>Only authorized choir admins can edit songs.</p>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <button onclick="login()">Login</button>
+
+      <p id="loginError" class="error-message"></p>
+    </section>
+
+    <section id="adminSection" class="admin-panel hidden">
+      <div class="admin-header">
+        <div>
+          <h1>Song Manager</h1>
+          <p>Add, edit, or delete choir songs.</p>
+        </div>
+
+        <div class="admin-buttons">
+  <a class="back-btn" href="../index.html">Back to Songs</a>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+      </div>
+
+      <div class="admin-layout">
+        <section class="form-panel">
+          <h2 id="formTitle">Add New Song</h2>
+
+          <input type="hidden" id="editIndex" />
+
+          <label>Song Title</label>
+          <input type="text" id="songTitle" placeholder="Enter song title" />
+
+          <label>Category</label>
+          <select id="songCategory">
+            <option value="Entrance">Entrance</option>
+            <option value="Offertory">Offertory</option>
+            <option value="Communion">Communion</option>
+            <option value="Recessional">Recessional</option>
+            <option value="Praise and Worship">Praise and Worship</option>
+            <option value="Others">Others</option>
+          </select>
+
+          <label>Lyrics</label>
+          <textarea id="songLyrics" placeholder="Enter lyrics here..."></textarea>
+
+          <label>Upload Files</label>
+<input
+  type="file"
+  id="songFiles"
+  multiple
+  accept="image/*,.pdf,.doc,.docx"
+/>
+
+
+<div id="existingFiles" class="existing-files"></div>
+
+           <small>
+  You can upload images, PDF files, and Word documents.
+            </small>
+
+          <div class="form-actions">
+            <button onclick="saveSong()">Save Song</button>
+            <button class="secondary-btn" onclick="clearForm()">Clear</button>
+          </div>
+        </section>
+
+        <section class="list-panel">
+          <h2>Existing Songs</h2>
+          <div id="adminSongList"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
