@@ -139,7 +139,7 @@ function fileToDataUrl(file) {
   });
 }
 
-function compressImage(file, maxWidth = 1600, quality = 0.85) {
+  function compressImage(file, maxWidth = 1200, quality = 0.75){
   return new Promise(resolve => {
     const img = new Image();
 
@@ -379,6 +379,9 @@ function clearForm() {
 }
 
 async function publishSongs() {
+  const publishBtn =
+    document.getElementById("publishBtn");
+
   const songs =
     JSON.parse(
       localStorage.getItem("choirSongs")
@@ -394,6 +397,9 @@ async function publishSongs() {
   );
 
   if (!confirmed) return;
+
+  publishBtn.disabled = true;
+  publishBtn.textContent = "Publishing...";
 
   alert("Publishing website. Please wait...");
 
@@ -413,12 +419,21 @@ async function publishSongs() {
   const result = await response.json();
 
   if (!response.ok) {
+    publishBtn.disabled = false;
+    publishBtn.textContent =
+      "Publish Website";
+
     alert(
       result.message ||
       "Publish failed. Please try again."
     );
+
     return;
   }
+
+  publishBtn.disabled = false;
+  publishBtn.textContent =
+    "Publish Website";
 
   alert(
     "Website publish started successfully. Please wait a few minutes for Netlify to update."

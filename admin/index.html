@@ -73,13 +73,18 @@
             </small>
 
           <div class="form-actions">
-            <button onclick="saveSong()">Save Song</button>
-            <button class="secondary-btn" onclick="clearForm()">Clear</button>
-             <button class="publish-btn" onclick="publishSongs()">Publish Website</button>
-          </div>
-        </section>
+  <button onclick="saveSong()">Save Song</button>
+  <button class="secondary-btn" onclick="clearForm()">Clear</button>
+  <button
+    id="publishBtn"
+    onclick="publishSongs()">
+    Publish Website
+  </button>
+</div>
 
-        <section class="list-panel">
+</section>
+
+<section class="list-panel">
           <h2>Existing Songs</h2>
           <div id="adminSongList"></div>
         </section>

@@ -22,7 +22,7 @@ function cleanFileName(name) {
 }
 
 function cleanFolderName(text) {
-  return text
+  return (text || "song")
     .replace(/\s+/g, "-")
     .replace(/[^a-zA-Z0-9-_]/g, "")
     .toLowerCase();
@@ -59,20 +59,30 @@ async function createBlob(content, encoding = "base64") {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        content,
-        encoding
-      })
+      body: JSON.stringify({ content, encoding })
     }
   );
+}
+
+async function getExistingSongs() {
+  try {
+    const fileData = await githubRequest(
+      `https://api.github.com/repos/${owner}/${repo}/contents/data/songs.json?ref=${branch}`
+    );
+
+    const jsonText = Buffer.from(fileData.content, "base64").toString("utf8");
+    const songs = JSON.parse(jsonText);
+
+    return Array.isArray(songs) ? songs : [];
+  } catch {
+    return [];
+  }
 }
 
 exports.handler = async (event) => {
   try {
     if (event.httpMethod !== "POST") {
-      return jsonResponse(405, {
-        message: "Method not allowed."
-      });
+      return jsonResponse(405, { message: "Method not allowed." });
     }
 
     if (!owner || !repo || !token) {
@@ -85,9 +95,7 @@ exports.handler = async (event) => {
     const draftSongs = payload.songs || [];
 
     if (!Array.isArray(draftSongs)) {
-      return jsonResponse(400, {
-        message: "Invalid songs payload."
-      });
+      return jsonResponse(400, { message: "Invalid songs payload." });
     }
 
     const refData = await githubRequest(
@@ -115,14 +123,11 @@ exports.handler = async (event) => {
       const publishedFiles = [];
 
       for (const file of song.files || []) {
-
-
-       if (file.size && file.size > 5 * 1024 * 1024) {
-       throw new Error(
-       `${file.name} is too large. Maximum file size is 5MB.`
-         );
-         }
-
+        if (file.size && file.size > 5 * 1024 * 1024) {
+          throw new Error(
+            `${file.name} is too large. Maximum file size is 5MB.`
+          );
+        }
 
         if (file.url && !file.dataUrl) {
           publishedFiles.push(file);
@@ -146,13 +151,13 @@ exports.handler = async (event) => {
           sha: blob.sha
         });
 
-          publishedFiles.push({
+        publishedFiles.push({
           id: file.id,
           name: safeFileName,
           type: file.type,
           size: file.size,
           url: `/${filePath}`
-         });
+        });
       }
 
       publishedSongs.push({
@@ -170,7 +175,21 @@ exports.handler = async (event) => {
       });
     }
 
-    const songsJson = JSON.stringify(publishedSongs, null, 2);
+    const existingSongs = await getExistingSongs();
+
+    const mergedMap = new Map();
+
+    for (const song of existingSongs) {
+      if (song.id) mergedMap.set(song.id, song);
+    }
+
+    for (const song of publishedSongs) {
+      if (song.id) mergedMap.set(song.id, song);
+    }
+
+    const finalSongs = Array.from(mergedMap.values());
+
+    const songsJson = JSON.stringify(finalSongs, null, 2);
 
     const songsBlob = await createBlob(
       Buffer.from(songsJson).toString("base64"),
@@ -223,7 +242,8 @@ exports.handler = async (event) => {
 
     return jsonResponse(200, {
       message: "Publish completed.",
-      songsCount: publishedSongs.length,
+      songsCount: finalSongs.length,
+      newSongsCount: publishedSongs.length,
       commit: newCommit.sha
     });
   } catch (error) {
