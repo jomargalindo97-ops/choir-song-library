@@ -9,19 +9,8 @@ const songCount = document.getElementById("songCount");
 
 async function loadSongs() {
   try {
-    const savedSongs = localStorage.getItem("choirSongs");
-
-    if (savedSongs) {
-      songs = JSON.parse(savedSongs);
-    } else {
-      const response = await fetch("data/songs.json");
-      songs = await response.json();
-
-      localStorage.setItem(
-        "choirSongs",
-        JSON.stringify(songs)
-      );
-    }
+    const response = await fetch("data/songs.json?t=" + Date.now());
+    songs = await response.json();
 
     renderCategories();
     renderSongs();
@@ -114,18 +103,18 @@ function showSong(title) {
   if (!song) return;
 
   const imageFiles = (song.files || [])
-  .filter(file =>
-    file.type &&
-    file.type.startsWith("image/")
-  );
-
-const documentFiles = (song.files || [])
-  .filter(file =>
-    !(
+    .filter(file =>
       file.type &&
       file.type.startsWith("image/")
-    )
-  );
+    );
+
+  const documentFiles = (song.files || [])
+    .filter(file =>
+      !(
+        file.type &&
+        file.type.startsWith("image/")
+      )
+    );
 
   songDetails.innerHTML = `
     <h1 class="song-title">
@@ -137,26 +126,26 @@ const documentFiles = (song.files || [])
     </div>
 
     <div class="song-images">
-  ${imageFiles.map(file => `
-    <img
-      src="${file.dataUrl}"
-      alt="${file.name}"
-      class="song-image"
-    />
-  `).join("")}
-</div>
+      ${imageFiles.map(file => `
+        <img
+          src="${file.url || file.dataUrl}"
+          alt="${file.name}"
+          class="song-image"
+        />
+      `).join("")}
+    </div>
 
-<div class="song-documents">
-  ${documentFiles.map(file => `
-    <a
-      href="${file.dataUrl}"
-      target="_blank"
-      class="file-link"
-    >
-      📄 ${file.name}
-    </a>
-  `).join("")}
-</div>
+    <div class="song-documents">
+      ${documentFiles.map(file => `
+        <a
+          href="${file.url || file.dataUrl}"
+          target="_blank"
+          class="file-link"
+        >
+          📄 ${file.name}
+        </a>
+      `).join("")}
+    </div>
 
     <div class="song-lyrics">
       ${song.lyrics || ""}

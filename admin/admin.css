@@ -180,3 +180,10 @@ label {
     justify-content: center;
   }
 }
+.publish-btn {
+  background: #b91c1c;
+}
+
+.publish-btn:hover {
+  background: #7f1d1d;
+}

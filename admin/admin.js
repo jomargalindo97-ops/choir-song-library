@@ -75,7 +75,7 @@ function loadAdminSongs() {
 
   if (!songs.length) {
     adminSongList.innerHTML =
-      "<p>No songs found.</p>";
+      "<p>No draft songs found.</p>";
     return;
   }
 
@@ -87,10 +87,12 @@ function loadAdminSongs() {
         <h3>${song.title}</h3>
 
         <p>${song.category}</p>
-<p>
-  Files:
-  ${(song.files || []).length}
-</p>
+
+        <p>
+          Files:
+          ${(song.files || []).length}
+        </p>
+
         <div class="card-actions">
           <button
             class="edit-btn"
@@ -121,37 +123,34 @@ async function saveSong() {
   const lyrics =
     document.getElementById("songLyrics").value.trim();
 
-  const filesInput = document.getElementById("songFiles");
-const files = Array.from(filesInput.files);
+  const filesInput =
+    document.getElementById("songFiles");
 
-const imageFiles = files.filter(file =>
-  file.type.startsWith("image/")
-);
+  const files =
+    Array.from(filesInput.files);
 
-const documentFiles = files.filter(file =>
-  file.type === "application/pdf" ||
-  file.name.toLowerCase().endsWith(".doc") ||
-  file.name.toLowerCase().endsWith(".docx")
-);
+  const uploadedFiles = await Promise.all(
+    files.map(file => {
+      return new Promise(resolve => {
+        const reader = new FileReader();
 
-const uploadedFiles = await Promise.all(
-  files.map(file => {
-    return new Promise(resolve => {
-      const reader = new FileReader();
+        reader.onload = () => {
+          resolve({
+            id:
+              crypto.randomUUID
+                ? crypto.randomUUID()
+                : String(Date.now()) + "-" + file.name,
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            dataUrl: reader.result
+          });
+        };
 
-      reader.onload = () => {
-        resolve({
-          name: file.name,
-          type: file.type,
-          size: file.size,
-          dataUrl: reader.result
-        });
-      };
-
-      reader.readAsDataURL(file);
-    });
-  })
-);
+        reader.readAsDataURL(file);
+      });
+    })
+  );
 
   const editIndex =
     document.getElementById("editIndex").value;
@@ -166,37 +165,46 @@ const uploadedFiles = await Promise.all(
       localStorage.getItem("choirSongs")
     ) || [];
 
+  let existingSong = null;
   let existingFiles = [];
 
-if (editIndex !== "") {
-  existingFiles = songs[editIndex].files || [];
-}
+  if (editIndex !== "") {
+    existingSong = songs[editIndex];
+    existingFiles = existingSong.files || [];
+  }
 
-const allFiles = [
-  ...existingFiles,
-  ...uploadedFiles
-];
+  const allFiles = [
+    ...existingFiles,
+    ...uploadedFiles
+  ];
 
-const song = {
-  title,
-  category,
-  lyrics,
-  files: allFiles,
-  images: allFiles
-    .filter(file =>
-      file.type &&
-      file.type.startsWith("image/")
-    )
-    .map(file => file.name),
-  documents: allFiles
-    .filter(file =>
-      !(
+  const song = {
+    id:
+      existingSong?.id ||
+      (
+        crypto.randomUUID
+          ? crypto.randomUUID()
+          : String(Date.now())
+      ),
+    title,
+    category,
+    lyrics,
+    files: allFiles,
+    images: allFiles
+      .filter(file =>
         file.type &&
         file.type.startsWith("image/")
       )
-    )
-    .map(file => file.name)
-};
+      .map(file => file.name),
+    documents: allFiles
+      .filter(file =>
+        !(
+          file.type &&
+          file.type.startsWith("image/")
+        )
+      )
+      .map(file => file.name)
+  };
 
   if (editIndex !== "") {
     songs[editIndex] = song;
@@ -212,7 +220,7 @@ const song = {
   clearForm();
   loadAdminSongs();
 
-  alert("Song saved successfully.");
+  alert("Song saved as draft.");
 }
 
 function editSong(index) {
@@ -227,24 +235,24 @@ function editSong(index) {
     index;
 
   document.getElementById("songTitle").value =
-    song.title;
+    song.title || "";
 
   document.getElementById("songCategory").value =
-    song.category;
+    song.category || "Entrance";
 
   document.getElementById("songLyrics").value =
-    song.lyrics;
+    song.lyrics || "";
 
-    const existingFilesDiv =
-  document.getElementById("existingFiles");
+  const existingFilesDiv =
+    document.getElementById("existingFiles");
 
-existingFilesDiv.innerHTML = (song.files || [])
-  .map(file => `
-    <div>
-      📎 ${file.name}
-    </div>
-  `)
-  .join("");
+  existingFilesDiv.innerHTML = (song.files || [])
+    .map(file => `
+      <div>
+        📎 ${file.name}
+      </div>
+    `)
+    .join("");
 
   document.getElementById("formTitle").textContent =
     "Edit Song";
@@ -252,7 +260,7 @@ existingFilesDiv.innerHTML = (song.files || [])
 
 function deleteSong(index) {
   const confirmDelete = confirm(
-    "Delete this song?"
+    "Delete this draft song?"
   );
 
   if (!confirmDelete) return;
@@ -269,6 +277,7 @@ function deleteSong(index) {
     JSON.stringify(songs)
   );
 
+  clearForm();
   loadAdminSongs();
 }
 
@@ -284,9 +293,57 @@ function clearForm() {
 
   document.getElementById("songFiles").value = "";
 
+  document.getElementById("existingFiles").innerHTML = "";
+
   document.getElementById("formTitle").textContent =
     "Add New Song";
-document.getElementById("existingFiles").innerHTML = "";
+}
+
+async function publishSongs() {
+  const songs =
+    JSON.parse(
+      localStorage.getItem("choirSongs")
+    ) || [];
+
+  if (!songs.length) {
+    alert("No draft songs to publish.");
+    return;
+  }
+
+  const confirmed = confirm(
+    "Are you sure you want to publish all draft changes to the live website?"
+  );
+
+  if (!confirmed) return;
+
+  alert("Publishing website. Please wait...");
+
+  const response = await fetch(
+    "/.netlify/functions/publishSongs",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        songs
+      })
+    }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    alert(
+      result.message ||
+      "Publish failed. Please try again."
+    );
+    return;
+  }
+
+  alert(
+    "Website publish started successfully. Please wait a few minutes for Netlify to update."
+  );
 }
 
 window.onload = () => {
