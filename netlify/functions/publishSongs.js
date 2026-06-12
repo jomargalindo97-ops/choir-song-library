@@ -12,9 +12,12 @@ function jsonResponse(statusCode, data) {
 }
 
 function cleanFileName(name) {
-  return name
+  const fallback = `file-${Date.now()}`;
+
+  return (name || fallback)
     .replace(/\s+/g, "-")
     .replace(/[^a-zA-Z0-9._-]/g, "")
+    .replace(/-+/g, "-")
     .toLowerCase();
 }
 
@@ -112,6 +115,15 @@ exports.handler = async (event) => {
       const publishedFiles = [];
 
       for (const file of song.files || []) {
+
+
+       if (file.size && file.size > 5 * 1024 * 1024) {
+       throw new Error(
+       `${file.name} is too large. Maximum file size is 5MB.`
+         );
+         }
+
+
         if (file.url && !file.dataUrl) {
           publishedFiles.push(file);
           continue;
@@ -134,13 +146,13 @@ exports.handler = async (event) => {
           sha: blob.sha
         });
 
-        publishedFiles.push({
+          publishedFiles.push({
           id: file.id,
-          name: file.name,
+          name: safeFileName,
           type: file.type,
           size: file.size,
           url: `/${filePath}`
-        });
+         });
       }
 
       publishedSongs.push({

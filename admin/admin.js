@@ -113,6 +113,99 @@ function loadAdminSongs() {
     .join("");
 }
 
+
+
+function slugifyFileName(name) {
+  const extension = name.split(".").pop().toLowerCase();
+
+  return name
+    .replace(/\.[^/.]+$/, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "") +
+    "-" +
+    Date.now() +
+    "." +
+    extension;
+}
+
+function fileToDataUrl(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+
+    reader.onload = () => resolve(reader.result);
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function compressImage(file, maxWidth = 1600, quality = 0.85) {
+  return new Promise(resolve => {
+    const img = new Image();
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxWidth) {
+        height = Math.round((height * maxWidth) / width);
+        width = maxWidth;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+
+      canvas.toBlob(
+  blob => {
+    if (!blob) {
+      resolve(file);
+      return;
+    }
+          const compressedFile = new File(
+            [blob],
+            file.name.replace(/\.[^/.]+$/, ".webp"),
+            { type: "image/webp" }
+          );
+
+          resolve(compressedFile);
+        },
+        "image/webp",
+        quality
+      );
+    };
+
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+async function prepareUploadFile(file) {
+  const isImage =
+    file.type && file.type.startsWith("image/");
+
+  const finalFile = isImage
+    ? await compressImage(file)
+    : file;
+
+  return {
+    id:
+      crypto.randomUUID
+        ? crypto.randomUUID()
+        : String(Date.now()) + "-" + finalFile.name,
+    name: isImage
+      ? slugifyFileName(finalFile.name)
+      : slugifyFileName(finalFile.name),
+    type: finalFile.type,
+    size: finalFile.size,
+    dataUrl: await fileToDataUrl(finalFile)
+  };
+}
+
+
 async function saveSong() {
   const title =
     document.getElementById("songTitle").value.trim();
@@ -129,28 +222,14 @@ async function saveSong() {
   const files =
     Array.from(filesInput.files);
 
+if (files.length > 10) {
+  alert("Maximum of 10 files only per song.");
+  return;
+}
+
   const uploadedFiles = await Promise.all(
-    files.map(file => {
-      return new Promise(resolve => {
-        const reader = new FileReader();
-
-        reader.onload = () => {
-          resolve({
-            id:
-              crypto.randomUUID
-                ? crypto.randomUUID()
-                : String(Date.now()) + "-" + file.name,
-            name: file.name,
-            type: file.type,
-            size: file.size,
-            dataUrl: reader.result
-          });
-        };
-
-        reader.readAsDataURL(file);
-      });
-    })
-  );
+  files.map(file => prepareUploadFile(file))
+);
 
   const editIndex =
     document.getElementById("editIndex").value;
