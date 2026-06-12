@@ -1,56 +1,20 @@
 [
   {
-    "id": "lead-me-lord",
-    "title": "Lead Me Lord",
-    "category": "Communion",
-    "lyrics": "Lead me Lord,\nLead me by the hand,\nAnd make me face the rising sun.",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "amazing-grace",
-    "title": "Amazing Grace",
-    "category": "Praise and Worship",
-    "lyrics": "Amazing grace, how sweet the sound,\nThat saved a wretch like me.",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "how-great-thou-art",
-    "title": "How Great Thou Art",
-    "category": "Offertory",
-    "lyrics": "O Lord my God,\nWhen I in awesome wonder.",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "test",
-    "title": "test",
-    "category": "Entrance",
-    "lyrics": "",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "631ef35a-7867-4ef3-a90d-d6126d186d24",
-    "title": "test",
+    "id": "e55c2565-f493-4380-9543-8b79804f3eac",
+    "title": "LORD, I OFFER MY LIFE",
     "category": "Others",
-    "lyrics": "Hello Choir",
+    "lyrics": "",
     "files": [
       {
-        "id": "e9804c43-6c03-4b41-9438-0d0bd453f6ce",
-        "name": "test312321.jpg",
+        "id": "2836107d-7c0b-4eb3-a55d-79b7a9d23518",
+        "name": "1000123117.jpg",
         "type": "image/jpeg",
-        "size": 91587,
-        "url": "/assets/uploads/631ef35a-7867-4ef3-a90d-d6126d186d24-test/test312321.jpg"
+        "size": 153450,
+        "url": "/assets/uploads/e55c2565-f493-4380-9543-8b79804f3eac-lord-i-offer-my-life/1000123117.jpg"
       }
     ],
     "images": [
-      "test312321.jpg"
+      "1000123117.jpg"
     ],
     "documents": []
   }
