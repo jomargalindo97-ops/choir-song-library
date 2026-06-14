@@ -54,9 +54,14 @@ textarea {
   font-size: 15px;
 }
 
-textarea {
-  min-height: 130px;
+#songLyrics {
+  min-height: 500px;
   resize: vertical;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 1.7;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
 }
 
 button {
@@ -186,4 +191,10 @@ label {
 
 .publish-btn:hover {
   background: #7f1d1d;
+}
+
+#songLyrics:focus {
+  outline: none;
+  border-color: #b91c1c;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15);
 }
