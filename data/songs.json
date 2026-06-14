@@ -1,112 +1,110 @@
 [
   {
-    "id": "53fd430c-00b9-4e75-8ac2-16548d98865d",
-    "title": "Take and receive",
-    "category": "Offertory",
-    "lyrics": "Take and receive oh lord",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "fb1c6b4d-4403-4e05-9921-71fced9109ba",
-    "title": "Take and receive",
-    "category": "Communion",
-    "lyrics": "Take and receive",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "d6335484-156a-413e-9921-96dfb191743c",
-    "title": "Lead Me Lord",
-    "category": "Communion",
-    "lyrics": "Lead me Lord,\nLead me by the hand,\nAnd make me face the rising sun.",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "be9a0f5b-7960-4e91-b601-8d259e3fb228",
-    "title": "Amazing Grace",
-    "category": "Praise and Worship",
-    "lyrics": "Amazing grace, how sweet the sound,\nThat saved a wretch like me.",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "869f6d37-0b41-4b17-a099-9b4e56789acd",
-    "title": "How Great Thou Art",
-    "category": "Offertory",
-    "lyrics": "O Lord my God,\nWhen I in awesome wonder.",
-    "files": [],
-    "images": [],
-    "documents": []
-  },
-  {
-    "id": "a6179aa0-bac8-4f1d-ba27-61963988bc6c",
-    "title": "test",
-    "category": "Entrance",
-    "lyrics": "",
-    "files": [
-      {
-        "id": "dbe4d441-64fe-44ee-9145-6e8bf3005266",
-        "name": "qqw-1781308121203.webp",
-        "type": "image/webp",
-        "size": 83472,
-        "url": "/assets/uploads/a6179aa0-bac8-4f1d-ba27-61963988bc6c-test/qqw-1781308121203.webp"
-      },
-      {
-        "id": "809f535b-d766-49e3-9aa8-068c299cfa08",
-        "name": "qwer-1781308121145.webp",
-        "type": "image/webp",
-        "size": 36352,
-        "url": "/assets/uploads/a6179aa0-bac8-4f1d-ba27-61963988bc6c-test/qwer-1781308121145.webp"
-      }
-    ],
-    "images": [
-      "qqw-1781308121203.webp",
-      "qwer-1781308121145.webp"
-    ],
-    "documents": []
-  },
-  {
-    "id": "631ef35a-7867-4ef3-a90d-d6126d186d24",
-    "title": "test",
+    "id": "089d077f-8108-474e-b4b0-9061574b5d93",
+    "title": "Papuri sa Diyos",
     "category": "Others",
-    "lyrics": "Hello Choir",
-    "files": [
-      {
-        "id": "e9804c43-6c03-4b41-9438-0d0bd453f6ce",
-        "name": "test312321.jpg",
-        "type": "image/jpeg",
-        "size": 91587,
-        "url": "/assets/uploads/631ef35a-7867-4ef3-a90d-d6126d186d24-test/test312321.jpg"
-      }
-    ],
-    "images": [
-      "test312321.jpg"
-    ],
+    "lyrics": "Papuri sa Diyos\n\n[Chorus]\nPurihin ninyo ang Panginoon Dakilain ang Kanyang Ngalan Purihin, Siya ay awitan\nAt papurihan magpakailanman\n\n[Verse 1]\nNilikha Niya ang langit at lupa Nilikha Niya ang araw at buwan Nilikha Niya ang mga isda't ibon Mga gubat at karagatan\n\n[Pre-Chorus 1]\nTunay Siyang banal at dakila Purihin ang Kanyang ngalan\nAng lahat ng nilikha Niya'y mabuti Pinagyaman Niya ng lubusan\n\n[Chorus]\nPurihin ninyo ang Panginoon Dakilain ang Kanyang Ngalan Purihin, Siya ay awitan\nAt papurihan magpakailanman\n\n[Verse 2]\nNilalang ng Panginoon ang tao Sa sarili Niyang larawan Nilalang Niya ang sangkatauhan Binigyan Niya ng kalayaan\n\n[Pre-Chorus 2]\nTunay Siyang banal at dakila Purihin ang Kanyang Ngalan Kahit nagkasala ang tao\nMinahal Niya pa rin nang lubusan\n\n[Chorus]\nPurihin ninyo ang Panginoon Dakilain ang Kanyang Ngalan Purihin, Siya ay awitan\nAt papurihan magpakailanman",
+    "files": [],
+    "images": [],
     "documents": []
   },
   {
-    "id": "88602bf7-f872-4d58-9901-28941f037820",
-    "title": "Top",
-    "category": "Offertory",
-    "lyrics": "",
-    "files": [
-      {
-        "id": "8511151e-1ca7-4d32-a60c-d32c3030fad6",
-        "name": "test312321-1781302734246.webp",
-        "type": "image/webp",
-        "size": 73928,
-        "url": "/assets/uploads/88602bf7-f872-4d58-9901-28941f037820-top/test312321-1781302734246.webp"
-      }
-    ],
-    "images": [
-      "test312321-1781302734246.webp"
-    ],
+    "id": "87e97cfa-1a4c-42d7-9bd1-7b24c5da4b95",
+    "title": "Panginoon maawa ka sa amin",
+    "category": "Others",
+    "lyrics": "Panginoon maawa Ka sa amin.// O Kristo maawa Ka sa amin.//\nPanginoon maawa Ka sa amin.//",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "576c5855-eb26-4d3c-995a-4683b6fda753",
+    "title": "Gloria (Maramba)",
+    "category": "Others",
+    "lyrics": "Gloria (Maramba)\n[Chorus]\nGloria, gloria, in excelsis deo. Gloria, gloria, in excelsis deo. Gloria, gloria, in excelsis deo.\n\n[Verse 1]\nAt king yatu kapayapan karing taung Keyang kaluguran.\nGuinung Diyos, \nAri ning banwa,\nMayupayang Diyos at Ibpa. \nSasamban Daka,\nPasalamatan Daka, \nPupuryan Daka,\nPauli ning Kekang ligaya!\n\n[Verse 2]\nGuinung Jesu-Kristo,\nBugtung nang Anak ning Ibpa, Guinung Diyos,\nKordero ning Diyos;\nIkang milalako king kasalanan ning yatu,\nPacaluluan mu kami.\nIkang makalukluk king wanan ning Ibpa.\nTanggapan mu ing panalangin mi\n\n[Verse 3]\nUling Ikang bukud ing banal \nIkang bukud ing Guinu!\nIkang Bukud ing kakatas-kata-asan, JesuKristo. \nKagum ning Espiritung Banal,\nKing liga-aya ning Diyos Ibpa. \n\nAmen, amen, amen!",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "cf4f20bf-b802-4f56-afa1-e45fc0bc5d31",
+    "title": "Alleluia (Marcelo)",
+    "category": "Others",
+    "lyrics": "Take and receive\n\nTake and receive, o Lord, my liberty Take all my will, my mind, my memory All things I hold and all I own are Thine Thine was the gift, to Thee I all resign\n\nDo Thou direct and govern all and sway Do what Thou wilt, command, and I obey Only Thy grace, Thy love on me bestow\nThese make me rich, all else will I forego\n\nDo Thou direct and govern all and sway \nDo what Thou wilt, command, and I obey\nOnly Thy grace, Thy love on me bestow\nThese make me rich, all else will I forego",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "6b06a51f-9f30-4c28-a892-0b3d09000246",
+    "title": "Holy (light)",
+    "category": "Others",
+    "lyrics": "Holy (light)\n\nHoly, holy, holy, Lord God of host. Heaven and earth are full of your glory, \nfull of your glory.\nHosanna in the highest! \nHosanna in the highest!\n\nBlessed is he who comes in the name of the Lord. \nHosanna in the highest!\nHosanna in the highest! \nHosanna in the highest! \nHosanna in the highest!",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "63450139-2551-4300-9984-ccdfaaa149ff",
+    "title": "When we eat (light)",
+    "category": "Entrance",
+    "lyrics": "When we eat (light)\n\nWhen we eat this bread and drink this cup \nwe proclaim your death o Lord.\nUntil you come again, \nuntil you come again \nwe proclaim your death o Lord.",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "114f6018-7fe5-4b90-8983-13e0d4d430ae",
+    "title": "Amen Alleluia (Purihin ang Diyos)",
+    "category": "Others",
+    "lyrics": "Amen, amen, amen, amen, alleluia! Purihin ang Diyos, purihin ang Diyos Amen alleluia!\nAmen, amen, amen, amen, alleluia!",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "067ec479-9d9e-4bb0-a7d1-6f0b17d0f40f",
+    "title": "Ama namin",
+    "category": "Entrance",
+    "lyrics": "Ama namin \nAma namin \nSumasalangit ka\nSambahin ang ngalan mo \nMapasaamin ang kaharian mo \nSundin ang loob mo\nDito sa lupa\nPara nang sa langit\nBigyan mo po kami ngayon\nNg aming kakanin sa araw-araw \nAt patawarin mo kami\nSa aming mga sala\nPara ng pagpapatawad namin Sa nagkakasala sa amin\nAt huwag mo kaming ipahintulot sa Tukso \nat iadya mo kami Sa lahat ng masama",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "360a043a-1519-48c7-8239-cb35429406a9",
+    "title": "Sapagkat",
+    "category": "Others",
+    "lyrics": "Sapagkat\n\nSapagkat sayo ang kaharian, kapangyarihan, at kapurihan. \nNgayon at magpakailanman, \nngayon at magpakailanman",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "1146391b-3fea-4019-b5b3-9645c9bc4d11",
+    "title": "Kordero ng Diyos (Fr. Arnel Aquino)",
+    "category": "Others",
+    "lyrics": "Kordero ng Diyos (Fr. Arnel Aquino)\n\nKordero ng Diyos na nag aalis ng mga kasalanan ng sanlibutan.\nMaawa Ka sa amin. \nMaawa Ka sa amin.\nKordero ng Diyos na nag aalis ng mga kasalanan ng sanlibutan.\nMaawa Ka sa amin. \nMaawa Ka sa amin.\n\nKordero ng Diyos na nag aalis ng mga kasalanan ng sanlibutan.\nIpagkaloob mo sa amin ang kapayapaan.",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "38a27972-eb53-45d2-b612-1a7af48240b4",
+    "title": "Let me be the bearer",
+    "category": "Communion",
+    "lyrics": "Let me be the bearer\n\n(G)\nEvery day I sing to You with all my heart\nHear my pray'r, I raise them all into Your hands \n\n(B)\nCome to me and keep me safe in your arms Strengthen me to face the day\nFor You I stand\n\n[Pre-Chorus] (G)\nEven there is sadness, stay with me And fill me with your joy endlessly \n\n(B)\nLord, help me understand \nTo follow your commands\nI entrust my life into your care\n\n[Chorus] (All)\nMy Lord, fill me with your love Fill me with your truth\nFill me with your kindness\nMy Lord, let your goodness shine Let me speak your truth\nLet me be the bearer of your love\n\n[Verse 2] \n(B)\nEvery day, Let me proclaim and testify In your word, \nShow me your way\nFor you are light \n\n(G)\nYou alone can bring all wonders in this life \nHeal all wounds and take all worries I hide\n\n(G)\nEven if there’s Darkness stay with me \nAnd in your hands I hold faithfully \n\n(B)\nLord,Fill your grace inside, \nGrant me what you desire\nI raise all my voice \nLord, sing with me\n\n[Chorus](All)\nMy Lord, fill me with your love Fill me with your truth\nFill me with your kindness\nMy Lord, let your goodness shine Let me speak your truth\nLet me be the bearer of your love\n\n[Chorus](All)\nMy Lord, fill me with your love Fill me with your truth\nFill me with your kindness\nMy Lord, let your goodness shine Let me speak your truth\nLet me be the bearer of your love\n\n[Coda](all)\nLet me speak your truth\nLet me be the bearer of your love",
+    "files": [],
+    "images": [],
+    "documents": []
+  },
+  {
+    "id": "0831cd0e-428e-4a8d-8b63-10167d97875d",
+    "title": "I will sing",
+    "category": "Recessional",
+    "lyrics": "I will sing\n\nOoh... mamaye do bap bareva \nShiva pwe yo rap bareya \nMoreva shimbe bap bayevo reva Mamaye do bap bareva\nShiva pwe yo rap bareya \nHulele bap ba novara \nDo bap bara\n\nI will sing forever of Your love, O Lord \nI will celebrate the wonder of Your name \nFor the word that You speak \nis a song of forgiveness\nAnd a song of gentle mercy and of peace\n\nLet us wake at the morning and be filled with Your love\nAnd sing songs of praise all our days\nFor Your love is as high as the heavens above us \nAnd Your faithfulness as certain as the dawn\n\nI will sing forever of Your love, O Lord \nI will celebrate the wonder of Your name \nFor the word that You speak is a song of forgiveness\nAnd a song of gentle mercy and of peace\n\nI will sing forever of Your love, O Lord \nFor You are my refuge and my strength\nYou fill the world with Your life-giving spirit \nThat speaks Your word\nYour word of mercy and of peace\n\nCODA:\n\nAnd I will sing forever of Your love, O Lord\nYes I will sing forever of Your love, O Lord",
+    "files": [],
+    "images": [],
     "documents": []
   }
 ]
