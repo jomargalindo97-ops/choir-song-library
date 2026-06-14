@@ -67,15 +67,32 @@ function showAdmin() {
   loadAdminSongs();
 }
 
-function loadAdminSongs() {
-  const songs =
+async function loadAdminSongs() {
+  let songs =
     JSON.parse(
       localStorage.getItem("choirSongs")
-    ) || [];
+    );
+
+  if (!songs) {
+    try {
+      const response = await fetch("/data/songs.json");
+
+      songs = response.ok
+        ? await response.json()
+        : [];
+
+      localStorage.setItem(
+        "choirSongs",
+        JSON.stringify(songs)
+      );
+    } catch {
+      songs = [];
+    }
+  }
 
   if (!songs.length) {
     adminSongList.innerHTML =
-      "<p>No draft songs found.</p>";
+      "<p>No songs found.</p>";
     return;
   }
 
@@ -339,7 +356,7 @@ function editSong(index) {
 
 function deleteSong(index) {
   const confirmDelete = confirm(
-    "Delete this draft song?"
+    "Delete this song?"
   );
 
   if (!confirmDelete) return;
@@ -388,12 +405,12 @@ async function publishSongs() {
     ) || [];
 
   if (!songs.length) {
-    alert("No draft songs to publish.");
+    alert("No songs to publish.");
     return;
   }
 
   const confirmed = confirm(
-    "Are you sure you want to publish all draft changes to the live website?"
+    "Are you sure you want to publish these changes to the live website?"
   );
 
   if (!confirmed) return;

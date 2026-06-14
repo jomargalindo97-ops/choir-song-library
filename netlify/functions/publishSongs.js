@@ -175,19 +175,7 @@ exports.handler = async (event) => {
       });
     }
 
-    const existingSongs = await getExistingSongs();
-
-    const mergedMap = new Map();
-
-    for (const song of existingSongs) {
-      if (song.id) mergedMap.set(song.id, song);
-    }
-
-    for (const song of publishedSongs) {
-      if (song.id) mergedMap.set(song.id, song);
-    }
-
-    const finalSongs = Array.from(mergedMap.values());
+    const finalSongs = publishedSongs;
 
     const songsJson = JSON.stringify(finalSongs, null, 2);
 
